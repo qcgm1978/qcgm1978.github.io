@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "How to study google's new AI js library?"
-date:   2018-03-31 19:38:28 +0800
+title:  "TensorFlow-AI-Learning"
+date:   2018-04-14 19:38:28 +0800
 categories: jekyll update
 ---
 Today I know TensorFlow.js is released that is a library train and use deep learning models directly in the browser, in JavaScript. Includes the full Keras API, and ability to load saved Keras models (and even fine-tune them in the browser)! So I learn it on the official page: https://js.tensorflow.org/
@@ -38,7 +38,7 @@ describe(`A WebGL accelerated, browser based JavaScript library for training and
         }).catch((err) => done());
     });
 });
-=> test passed
+#=> test passed
 {% endhighlight %}
 
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
