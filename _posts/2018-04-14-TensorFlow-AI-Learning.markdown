@@ -38,7 +38,7 @@ describe(`A WebGL accelerated, browser based JavaScript library for training and
         }).catch((err) => done());
     });
 });
-#=> test passed
+=> test passed
 {% endhighlight %}
 
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
