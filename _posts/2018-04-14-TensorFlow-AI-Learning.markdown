@@ -146,6 +146,12 @@ test('adds 1 + 2 to equal 3', () => {
 => test passed
 {% endhighlight %}
 
+Don't forget adding --inspect to debug your jest test:
+
+{% highlight json %}
+ "test": "sudo node --inspect node_modules/.bin/jest --runInBand  spec.ts --watch"
+{% endhighlight %}
+
 5, We creat a index.html in the root directory and reference the bundled js file in 3 step.
 
 6,7 http://jmcglone.com/guides/github-pages/
