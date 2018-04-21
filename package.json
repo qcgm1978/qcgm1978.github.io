@@ -3,9 +3,24 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "test/.*.spec.ts",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
   "scripts": {
     "start": "bundle exec jekyll serve --incremental  --verbose",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --inspect ./node_modules/jest/bin/jest.js --runInBand  --watch",
+    "mac": "sudo node --inspect node_modules/.bin/jest --runInBand  --watch"
   },
   "repository": {
     "type": "git",
@@ -16,5 +31,15 @@
   "bugs": {
     "url": "https://github.com/qcgm1978/qcgm1978.github.io/issues"
   },
-  "homepage": "https://github.com/qcgm1978/qcgm1978.github.io#readme"
+  "homepage": "https://github.com/qcgm1978/qcgm1978.github.io#readme",
+  "devDependencies": {
+    "canvas": "^1.6.10",
+    "jest": "^22.4.3",
+    "source-map-support": "^0.5.4",
+    "ts-jest": "^22.4.4",
+    "typescript": "^2.8.3"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "^0.9.1"
+  }
 }
