@@ -45,7 +45,7 @@ describe(`https://en.wikipedia.org/wiki/SI_base_unit`, () => {
 });
 {% endhighlight %}
 
-What's the meaning? Metre(l) is the basic unit of Length. It's akin to the pixel(px) in physical measurement of DOM elements that is called `Absolute length units`. Of course there're seveal units like px e.g. cm, mm, ...y
+What's the meaning? Metre(l) is the basic unit of Length. It's akin to the pixel(px) in physical measurement of DOM elements that is called `Absolute length units`. Of course there're seveal units like px e.g. cm, mm, ...
 
 We code a test unit to describe that:
 
