@@ -1,0 +1,71 @@
+---
+layout: post
+title:  "How-to-debug-mobile-web-app"
+date:   2018-04-22 1:38:28 +0800
+categories: jekyll update
+---
+
+Today Mobile Web Hybrid Apps are popular and the fornt end develpers are facing the difficult problems. The mobile web app needs more careful looking care of. The adaptive, the code debugging etc. The article will explore some key points for beginners.
+
+The first: Adaptive, `rem`: It's a wonderful and perfect solution to mobile adaptive. In the past we use Media Query tech to solve mobile adaptive problems. You have to code different style files to meet the demand of different ratio of mobile device. Now you just code a single style which will be just the same in all kinds of devices.
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/font-size
+
+`rem values were invented in order to sidestep the compounding problem. rem values are relative to the root html element, not the parent element. In other words, it lets you specify a font size in a relative fashion without being affected by the size of the parent`
+
+demo code:
+
+{% highlight css %}
+html {
+  font-size: 62.5%; /* font-size 1em = 10px on default browser settings */
+}
+span {
+  font-size: 1.6rem;
+}
+{% endhighlight %}
+
+But before exploring the `rem` unit we firstly need think what's the meaning of the unit on earth that is traced back to philosophy.
+
+In the dark age or religious era we needn't know about the nature because God knows everything create everything and we only obeyed the rule of his. But after the era we began to know about nature or things. When I see a physics objects what I've seen. The fact I see its properties including width, height, weigh, taste, dense etc. But how I eliminate all of those? The concepts of human is about kinds or types that is ideal. To agreement we invent `Units` to measure all the things.
+
+Now we have SEVEN basic Units those're `The International System of Units (SI) defines seven units of measure as a basic set from which all other SI units can be derived. The SI base units and their physical quantities are the metre for measurement of length, the kilogram for mass, the second for time, the ampere for electric current, the kelvin for temperature, the candela for luminous intensity, and the mole for amount of substance.`
+
+We can code a test suit to describe the above units:
+
+{% highlight typescript %}
+describe(`https://en.wikipedia.org/wiki/SI_base_unit`, () => {
+    it(`Seven SI base units`, () => {
+        const SI = [{ "Name": "metre", "Symbol": "m", "Measure": "length", "DimensionSymbol": "L" }, { "Name": "kilogram", "Symbol": "kg", "Measure": "mass", "DimensionSymbol": "M" }, { "Name": "second", "Symbol": "s", "Measure": "time", "DimensionSymbol": "T" }, { "Name": "ampere", "Symbol": "A", "Measure": "electric current", "DimensionSymbol": "I" }, { "Name": "kelvin", "Symbol": "K", "Measure": "thermodynamic temperature", "DimensionSymbol": "Θ" }, { "Name": "mole", "Symbol": "mol", "Measure": "amount of substance", "DimensionSymbol": "N" }, { "Name": "candela", "Symbol": "cd", "Measure": "luminous intensity", "DimensionSymbol": "J" }];
+        expect(SI.length).toBe(7)
+    });
+    it(`"The metre is the length of the path travelled by light in vacuum during a time interval of 1 / 299792458 of a second."`, () => {
+        const metreUnit = 1, LightSpeed = metreUnit * 299792458, threeHundredThounsandMetres = 30 * 1e5 * 1e3;
+        expect(LightSpeed).toBeLessThan(threeHundredThounsandMetres)
+    });
+});
+{% endhighlight %}
+
+What's the meaning? Metre(l) is the basic unit of Length. It's akin to the pixel(px) in physical measurement of DOM elements that is called `Absolute length units`. Of course there're seveal units like px e.g. cm, mm, ...y
+
+We code a test unit to describe that:
+
+{% highlight typescript %}
+describe(`Absolute length units represent a physical measurement when the physical properties of the output medium are known, such as for print layout.`, () => {
+        it(`1px = 1/96th of 1in，One inch. 1in = 2.54cm = 96px`, () => {
+            const metre = 1
+            const cm = 1e-2 * metre
+            const px = 2.54 * cm / 96;
+            expect((px).toFixed(5)).toBe("0.00026")
+        });
+    });
+{% endhighlight %}
+
+What does the test tell us? `px` is not the basic unit of everything. It can be evaluated by METRE through the bridge of INCH. So we know we need a length measuement when developing front-end page. We set all kinds of absolute length units for web development. Those length units derived from the ultimate length unit METRE.
+
+p.s. Why does metre is constant? It's measured by the speed of light. Light speed in vacuum is absolute and unchangable. The statement is important for the modern science. We know Einstain's Relative Theory is based on the light speed exeriments. Einstain doesn't know why the light speed is constant but he is the first human knowing what it'll lead to. From then the ideal of human in the macro world is changed for ever.
+
+Next question: Why the `rem` unit introduced into web development?
+
+TO BE CONTINUED
+
+Thank you reading my blog.
