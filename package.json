@@ -19,7 +19,6 @@
   },
   "scripts": {
     "start": "bundle exec jekyll serve --incremental",
-    "test": "node --inspect ./node_modules/jest/bin/jest.js --runInBand  --watch",
     "mac": "sudo node --inspect node_modules/.bin/jest --runInBand  --watch"
   },
   "repository": {
