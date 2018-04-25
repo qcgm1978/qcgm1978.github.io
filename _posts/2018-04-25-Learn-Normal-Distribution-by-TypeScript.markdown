@@ -15,7 +15,7 @@ First we describe Normal Distribution by equation by Math.js library.
 
 demo code:
 
-{% highlight css %}
+{% highlight typescript %}
 it(`The probability density of the normal distribution is`, () => {
     expect(math.eval(`1/sqrt (2*pi *sigma ^2)*e^(-(x-u )^2/(2*sigma ^2))`, {
         sigma: 0.5,
