@@ -19,7 +19,9 @@
   },
   "scripts": {
     "start": "bundle exec jekyll serve --incremental",
-    "mac": "sudo node --inspect node_modules/.bin/jest --runInBand  --watch"
+    "test": "node --inspect=7000 ./node_modules/jest/bin/jest.js --runInBand  --watch",
+    "mac": "sudo node --inspect node_modules/.bin/jest --runInBand  --watch",
+    "fkill": "fkill :9229 -f -v"
   },
   "repository": {
     "type": "git",
@@ -39,6 +41,7 @@
     "typescript": "^2.8.3"
   },
   "dependencies": {
-    "@tensorflow/tfjs": "^0.9.1"
+    "@tensorflow/tfjs": "^0.9.1",
+    "mathjs": "^4.1.2"
   }
 }
