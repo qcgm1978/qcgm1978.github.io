@@ -7,7 +7,9 @@ categories: jekyll update
 
 Today Mobile Web Hybrid Apps are popular and the fornt end develpers are facing the difficult problems. The mobile web app needs more careful looking care of. The adaptive, the code debugging etc. The article will explore some key points for beginners.
 
-The first: Adaptive, `rem`: It's a wonderful and perfect solution to mobile adaptive. In the past we use Media Query tech to solve mobile adaptive problems. You have to code different style files to meet the demand of different ratio of mobile device. Now you just code a single style which will be just the same in all kinds of devices.
+<B>The first: Adaptive, `rem`:</B>
+
+ It's a wonderful and perfect solution to mobile adaptive. In the past we use Media Query tech to solve mobile adaptive problems. You have to code different style files to meet the demand of different ratio of mobile device. Now you just code a single style which will be just the same in all kinds of devices.
 
 https://developer.mozilla.org/en-US/docs/Web/CSS/font-size
 
@@ -66,6 +68,24 @@ p.s. Why does metre is constant? It's measured by the speed of light. Light spee
 
 Next question: Why the `rem` unit introduced into web development?
 
-TO BE CONTINUED
+`rem
+Represents the font-size of the root element (typically <html>). When used within the root element font-size, it represents its initial value (a common browser default is 16px, but user-defined preferences may modify this).`
+
+This means that 1rem equals the font size of the html element (which for most browsers has a default value of 16px). Because the two aspect relation is ratio relation that identify the page layout keeps constant in different metrics devices.
+
+But because it's a ratio relation that leads to the actual rem not intuitional. So we can use a trick called '62.5%' such as:
+
+{% highlight typescript %}
+body { font-size:62.5%; }  /* =10px */
+h1   { font-size: 2.4em; } /* =24px */
+p    { font-size: 1.4em; } /* =14px */
+li   { font-size: 1.4em; } /* =14px */
+{% endhighlight %}
+
+<B>The second: Remote Debugging:</B>
+
+Remote debug live content on an Android device from your Windows, Mac, or Linux computer.https://developers.google.com/web/tools/chrome-devtools/remote-debugging/
+
+
 
 Thank you reading my blog.
