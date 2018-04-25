@@ -84,8 +84,22 @@ li   { font-size: 1.4em; } /* =14px */
 
 <B>The second: Remote Debugging:</B>
 
-Remote debug live content on an Android device from your Windows, Mac, or Linux computer.https://developers.google.com/web/tools/chrome-devtools/remote-debugging/
+Remote debug live content on an Android device from your Windows, Mac, or Linux computer.
 
+Android: https://developers.google.com/web/tools/chrome-devtools/remote-debugging/
 
+iOS: It's akin to Android but you have to use Mac's safari to debug the browser or hybrid app embedded browser.
+
+So you should have a mac and install safari and Chrome/Canary to debug iOS and Android respectively.
+
+Tips: If your country block some google services you maybe open blank page when debugging. If so you have to use VPN service to connect the google server and debug the pages.
+
+<B>Performance:</B>
+
+The mobile performance is important and you need remember the problem. If page freezes you can use Performance panel of devtools in Chrome/Canary to detect the situation and which function callback. Or you can use Audits panel which integrated into Lighthouse tool to see what need optimize.
+
+Now you know the most important problems about mobile development. Moreover if you want to simulate App actions and UI effects you need use some UI library.
+
+Best luck to you!
 
 Thank you reading my blog.
