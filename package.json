@@ -21,6 +21,7 @@
     "start": "bundle exec jekyll serve --incremental",
     "test": "node --inspect=7000 ./node_modules/jest/bin/jest.js --runInBand  --watch",
     "mac": "sudo node --inspect=7000 node_modules/.bin/jest --runInBand  --watch",
+    "py": "python test/python/ndtest.py",
     "fkill": "fkill :9229 -f -v"
   },
   "repository": {

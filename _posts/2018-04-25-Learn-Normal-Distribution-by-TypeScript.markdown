@@ -126,6 +126,32 @@ The built-in method stdnormal_pdf (X): For each element of X, compute the probab
 
 <B>Python</B>
 
+{% highlight python %}
+import scipy.stats
+
+
+def ret():
+    return scipy.stats.norm(0, 1).pdf(0)
+
+{% endhighlight %}
+
+{% highlight python %}
+import unittest
+from nd import *
+
+
+class MyFirstTests(unittest.TestCase):
+
+    def test_nd(self):
+        self.assertEqual(ret(), 0.3989422804014327)
+
+
+if __name__ == '__main__':
+    unittest.main()
+{% endhighlight %}
+
+The tests passed. So the scipy.stats can do that. [Reference](https://stackoverflow.com/questions/12412895/calculate-probability-in-normal-distribution-given-mean-std-in-python)
+
 To be continued
 
 Best luck to you!
