@@ -17,3 +17,10 @@ describe(`https://en.wikipedia.org/wiki/SI_base_unit`, () => {
         });
     });
 });
+it(`Compute the mean value of matrix or a list with values.`, () => {
+    expect(math.mean(2, 1, 4, 3)).toBe(2.5);                     // returns 
+    expect(math.mean([1, 2.7, 3.2, 4])).toBe(2.725);               // returns 
+
+    expect(math.mean([[2, 5], [6, 3], [1, 7]], 0)).toEqual([3, 5]);    // returns 
+    expect(math.mean([[2, 5], [6, 3], [1, 7]], 1)).toEqual([3.5, 4.5, 4]);    // returns 
+});

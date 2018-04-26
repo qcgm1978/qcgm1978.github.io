@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "@tensorflow/tfjs": "^0.9.1",
-    "mathjs": "^4.1.2"
+    "mathjs": "^4.1.2",
+    "normal-distribution": "^0.0.5"
   }
 }
