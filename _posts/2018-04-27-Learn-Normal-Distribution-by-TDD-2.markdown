@@ -1,17 +1,13 @@
 ---
 layout: post
-title:  "Learn-Normal-Distribution-by-TypeScript"
-date:   2018-04-25 1:38:28 +0800
+title:  "Learn-Normal-Distribution-by-TDD-2"
+date:   2018-04-27 1:38:28 +0800
 categories: jekyll update
 ---
 
-Recently I've read some articles about AI or Machine Learning those all come down to Normal Distribution or Uniform Distribution. So I decide to learn that.
+[The first part](http://127.0.0.1:4000/jekyll/update/2018/04/25/Learn-Normal-Distribution-by-TDD-1.html)
 
-I will learn it by https://en.wikipedia.org/wiki/Normal_distribution
-
-According Wiki: `In probability theory, the normal (or Gaussian or Gauss or Laplace-Gauss) distribution is a very common continuous probability distribution. Normal distributions are important in statistics and are often used in the natural and social sciences to represent real-valued random variables whose distributions are not known. A random variable with a Gaussian distribution is said to be normally distributed and is called a normal deviate.`
-
-First we describe Normal Distribution by equation by Math.js library.
+<B>[Profile]</B>
 
 demo code:
 
@@ -151,6 +147,10 @@ if __name__ == '__main__':
 {% endhighlight %}
 
 The tests passed. So the scipy.stats can do that. [Reference](https://stackoverflow.com/questions/12412895/calculate-probability-in-normal-distribution-given-mean-std-in-python)
+
+Now we've already issue all the test suits coded by the three languages TypeScript, Octave and Python. But I still don't understand Normal Distribution so I decide to study it step by step on the basis of Wikipedia.
+
+
 
 To be continued
 
