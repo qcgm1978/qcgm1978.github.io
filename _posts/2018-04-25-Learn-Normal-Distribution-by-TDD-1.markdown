@@ -5,7 +5,7 @@ date:   2018-04-25 1:38:28 +0800
 categories: jekyll update
 ---
 
-Recently I've read some articles about AI or Machine Learning those all come down to Normal Distribution or Uniform Distribution. So I decide to learn that.
+Recently I've read some articles about AI or Machine Learning those all come down to Normal Distribution. So I decide to learn that.
 
 I will learn it by https://en.wikipedia.org/wiki/Normal_distribution
 
