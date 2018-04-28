@@ -9,6 +9,8 @@ categories: jekyll update
 
 https://stackoverflow.com/questions/29001977/safari-in-ios8-is-scrolling-screen-when-fixed-elements-get-focus
 
+http://geek.glodon.com/scm/wandacloud/bim_static_mobile.git
+
 {% highlight typescript %}
 
 {% endhighlight %}
