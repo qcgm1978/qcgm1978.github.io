@@ -1,4 +1,45 @@
 import * as math from 'mathjs'
+it(`Ways to create a regular expression`, () => {
+    const regex = /dog/;
+    const regex1 = new RegExp('dog');
+    expect(regex.test('dog')).toBeTruthy(); // true
+    expect(regex1.test('hot-dog')).toBeTruthy(); // true
+});
+it(`Character set`, () => {
+    expect(/[dfl]og/.test('dog')).toBeTruthy(); // true
+    expect(/[dfl]og/.test('fog')).toBeTruthy(); // true
+    expect(/[dfl]og/.test('log')).toBeTruthy(); // true
+    expect(/[A-z]/.test('a')).toBeTruthy(); // true
+    expect(/[A-z]/.test('Z')).toBeTruthy(); // true
+    expect(() =>const pattern = /[a-Z]/;).toThrow()
+});
+describe("regular expression", function () {
+    const regexp = /[bdc]\d\w/
+    it("to be true", function () {
+        expect(regexp.test('b6c')).toBe(true);
+        expect(regexp.test('d5e')).toBe(true);
+        expect(regexp.test('c7d')).toBe(true);
+    });
+
+    it("to be false", function () {
+        expect(regexp.test('a4b')).toBe(false);
+        expect(regexp.test('f8a')).toBe(false);
+        expect(regexp.test('e2f')).toBe(false);
+    });
+    it(`negated character`, () => {
+        expect(/[^df]og/.test('dog')).toBeFalsy(); // false
+        expect(/[^df]og/.test('fog')).toBeFalsy(); // false
+        expect(/[^df]og/.test('log')).toBeTruthy(); // true
+    });
+    it(`multiple repetitions`, () => {
+        function isPhoneNumber(number) {
+            return /\+[0-9]{2} [0-9]{3} [0-9]{3} [0-9]{3}/.test(number);
+        }
+
+        expect(isPhoneNumber('+12 123 123 123')).toBeTruthy(); // true
+        expect(isPhoneNumber('123212')).toBeFalsy(); // false
+    });
+});
 it(`https://en.wikipedia.org/wiki/Bernoulli_process`, () => {
     let num = parseInt('101010', 2);
     expect(num).toBe(42)
