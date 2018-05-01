@@ -1,6 +1,40 @@
 import { foo } from './exports'
 import * as math from './exports'
-// import math from './exports'
+import * as puppeteer from 'puppeteer';
+process.on('unhandledRejection', function (err, promise) {
+    debugger;
+    console.log('Unhandled rejection (promise: ', promise, ', reason: ', err, ').');
+});
+it(`The animation CSS property is a shorthand property for the various animation properties: animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, and animation-play-state.`, () => {
+    // (async (expect) => {
+    //     const browser = await puppeteer.launch();
+    //     const page = await browser.newPage();
+    //     await page.goto('http://127.0.0.1:4000');
+    //     // Get the "viewport" of the page, as reported by the page.
+
+    //     const dimensions = await page.evaluate(() => {
+    //         expect(document.body.style.animation).toBeUndefined()
+    //         document.body.style.animation = 'slidein 3s ease-in 1s infinite reverse both running';
+    //         expect(document.body.style.animationName).toBe();
+    //         return {
+    //             width: document.documentElement.clientWidth,
+    //             height: document.documentElement.clientHeight,
+    //             deviceScaleFactor: window.devicePixelRatio,
+    //             body: document.body
+    //         };
+    //     });
+
+    //     // expect(dimensions).toEqual({ "deviceScaleFactor": 1, "height": 600, "width": 800 });
+
+    //     await browser.close();
+    // })(expect);
+});
+it(`Partial support refers to basic support of element.animate() and playback control of AnimationPlayer`, () => {
+    if (navigator.appVersion.startsWith('5')) {
+
+        expect(document.body.animate).toBeDefined()
+    }
+});
 it('ES2016 modules has the `import X from ...` statement. but there’s also the `export X from ...` statement.', () => {
     expect(foo).not.toThrow();
     expect(foo()).toBe(1)
@@ -17,7 +51,7 @@ it(`Character set`, () => {
     expect(/[dfl]og/.test('log')).toBeTruthy(); // true
     expect(/[A-z]/.test('a')).toBeTruthy(); // true
     expect(/[A-z]/.test('Z')).toBeTruthy(); // true
-    expect(() =>const pattern = /[a-Z]/;).toThrow()
+    expect(() =>const pattern = /[a-Z]/).toThrow()
 });
 describe("regular expression", function () {
     const regexp = /[bdc]\d\w/
