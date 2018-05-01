@@ -1,4 +1,10 @@
-import * as math from 'mathjs'
+import { foo } from './exports'
+import * as math from './exports'
+// import math from './exports'
+it('ES2016 modules has the `import X from ...` statement. but there’s also the `export X from ...` statement.', () => {
+    expect(foo).not.toThrow();
+    expect(foo()).toBe(1)
+});
 it(`Ways to create a regular expression`, () => {
     const regex = /dog/;
     const regex1 = new RegExp('dog');
