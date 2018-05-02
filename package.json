@@ -36,6 +36,8 @@
   "homepage": "https://github.com/qcgm1978/qcgm1978.github.io#readme",
   "devDependencies": {
     "canvas": "^1.6.10",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
     "jest": "^22.4.3",
     "puppeteer": "^1.3.0",
     "source-map-support": "^0.5.4",
