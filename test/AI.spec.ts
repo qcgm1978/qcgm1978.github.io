@@ -1,6 +1,18 @@
 // import * as tf from '@tensorflow/tfjs';
 import NormalDistribution from 'normal-distribution'
+import { Engine, acorn } from 'way-of-life'
 const isIos = () => !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+describe(``, () => {
+    // initialize the game with an empty 40x40 matrix
+    // const engine = new Engine(40, 40)
+    // engine.init()
+
+    // // initialize some living cells around the center of the matrix
+    // acorn(engine, 20, 20)
+
+    // // compute the next state of game
+    // engine.computeNextState()
+});
 describe(`https://js.tensorflow.org/api/0.9.0/`, () => {
     // beforeAll(() => {
     //     this.isIos = () => !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);

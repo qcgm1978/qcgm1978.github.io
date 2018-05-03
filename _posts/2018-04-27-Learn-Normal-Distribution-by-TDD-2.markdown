@@ -12,7 +12,9 @@ categories: jekyll update
 demo code:
 
 {% highlight typescript %}
+describe(`Bell curve, the normal (or Gaussian or Gauss or Laplace-Gauss) distribution`, () => {
 
+});
 {% endhighlight %}
 
 
