@@ -1,24 +1,17 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
+        "module": "system",
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
+        "outFile": "../../built/local/tsc.js",
         "sourceMap": true
     },
-    "files": [
-        "core.ts",
-        "sys.ts",
-        "types.ts",
-        "scanner.ts",
-        "parser.ts",
-        "utilities.ts",
-        "binder.ts",
-        "checker.ts",
-        "emitter.ts",
-        "program.ts",
-        "commandLineParser.ts",
-        "tsc.ts",
-        "diagnosticInformationMap.generated.ts"
+    "include": [
+        "./module/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
     ]
 }

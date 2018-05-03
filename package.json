@@ -24,7 +24,11 @@
     "jest": "jest",
     "py": "python test/python/ndtest.py",
     "fkill": "fkill :9229 -f -v",
-    "dts": "dts-gen -m yargs -f test/yargs"
+    "dts": "dts-gen -m yargs -f test/yargs",
+    "clean": "rimraf built/*.js",
+    "ts": "npm-run-all clean --parallel watch:build watch:server --print-label",
+    "watch:build": "tsc test/yargs.d.ts ./built/index.js --watch",
+    "watch:server": "nodemon './built/index.js' --watch './built'"
   },
   "repository": {
     "type": "git",
@@ -48,6 +52,10 @@
     "@tensorflow/tfjs": "^0.9.1",
     "jest-cli": "^22.4.3",
     "mathjs": "^4.1.2",
-    "normal-distribution": "0.0.5"
+    "nodemon": "^1.17.3",
+    "normal-distribution": "0.0.5",
+    "npm-run-all": "^4.1.2",
+    "rimraf": "^2.6.2",
+    "typescript": "^2.8.3"
   }
 }
