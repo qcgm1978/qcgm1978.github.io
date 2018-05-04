@@ -46,7 +46,9 @@
   },
   "dependencies": {
     "@tensorflow/tfjs": "^0.9.1",
+    "jquery": "^3.3.1",
     "mathjs": "^4.1.2",
-    "normal-distribution": "0.0.5"
+    "normal-distribution": "0.0.5",
+    "wgo.js-1": "git+https://github.com/qcgm1978/wgo.js-1.git"
   }
 }

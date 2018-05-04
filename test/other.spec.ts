@@ -1,9 +1,48 @@
 import { foo } from './exports'
 import * as math from './exports'
 import * as puppeteer from 'puppeteer';
+import * as WGo from 'wgo.js-1'
+import * as $ from 'jquery';
 process.on('unhandledRejection', function (err, promise) {
     debugger;
     console.log('Unhandled rejection (promise: ', promise, ', reason: ', err, ').');
+});
+it(`http://wgo.waltheri.net/tutorials/board`, (done) => {
+    debugger;
+    expect(WGo).toBeDefined()
+    expect(WGo.Board).toBeInstanceOf(Function)
+    const getAjax = function (url, data, token, sucFn, errFn) {
+        $.ajax({
+            type: "get",
+            url: url,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("usertoken", token);
+            },
+            data: data,
+            dataType: "json",
+            timeout: 10000,
+            success: sucFn,
+            error: errFn
+        });
+    }
+    const loadData = () => {
+        var self = this;
+        // var url = '/online/golive/getdetail?id=' + commonMethod.getQueryString('id');
+        var url = 'http://portal.yikeweiqi.com/online/golive/getdetail?id=8681'
+        getAjax(url, '', self.userToken || -1, function (res) {
+            expect(res).toBeDefined()
+            done()
+            self.boardInfo = res.live;
+            self.cmt = res.cmt;
+            self.branch = res.branch;
+            self.player.loadSgf(self.boardInfo.Content);
+            self.player.last();
+            self.changeReaderControl();
+        }.bind(this), (err) => {
+            debugger;
+        });
+    }
+    loadData()
 });
 it(`The animation CSS property is a shorthand property for the various animation properties: animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, and animation-play-state.`, () => {
     // (async (expect) => {
