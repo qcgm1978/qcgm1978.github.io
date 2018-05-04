@@ -14,7 +14,6 @@ declare namespace yargs {
         m: string;
         version: boolean;
     };
-
     const parsed: boolean;
 
     const prototype: {
