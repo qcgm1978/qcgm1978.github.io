@@ -22,7 +22,8 @@
     "test": "node --inspect=7000 ./node_modules/jest/bin/jest.js --runInBand  --watch",
     "mac": "sudo node --inspect=9222 node_modules/.bin/jest --runInBand  --watch",
     "py": "python test/python/ndtest.py",
-    "fkill": "fkill :9229 -f -v"
+    "fkill": "fkill :9229 -f -v",
+    "tsc": "tsc --watch --sourceMap true -m system --outFile built/out.js module/demo.ts"
   },
   "repository": {
     "type": "git",
@@ -46,9 +47,11 @@
   },
   "dependencies": {
     "@tensorflow/tfjs": "^0.9.1",
+    "@types/jquery": "^3.3.1",
     "jquery": "^3.3.1",
     "mathjs": "^4.1.2",
     "normal-distribution": "0.0.5",
+    "systemjs": "^0.21.3",
     "wgo.js-1": "git+https://github.com/qcgm1978/wgo.js-1.git"
   }
 }

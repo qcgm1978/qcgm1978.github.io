@@ -7,7 +7,26 @@ process.on('unhandledRejection', function (err, promise) {
     debugger;
     console.log('Unhandled rejection (promise: ', promise, ', reason: ', err, ').');
 });
-it(`http://wgo.waltheri.net/tutorials/board`, (done) => {
+it(`The greatest truths are the simplest`, () => {
+    let isSuccess = false;
+    const method = bool => {
+        for (let i = 0, fool = true, son = false; i < 10000; i++) {
+            if (!fool && !son) {
+                break;
+            }
+            if (i === 5000) {
+                fool = false;
+                son = true;
+            }
+            if (i === 9999) {
+                return isSuccess = true;
+                // break;
+            }
+        }
+    };
+    expect(method(isSuccess)).toBeTruthy()
+});
+it(`http://wgo.waltheri.net/tutorials/board`, (/* done */) => {
     debugger;
     expect(WGo).toBeDefined()
     expect(WGo.Board).toBeInstanceOf(Function)
@@ -42,7 +61,7 @@ it(`http://wgo.waltheri.net/tutorials/board`, (done) => {
             debugger;
         });
     }
-    loadData()
+    // loadData()
 });
 it(`The animation CSS property is a shorthand property for the various animation properties: animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, and animation-play-state.`, () => {
     // (async (expect) => {
