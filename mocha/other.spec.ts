@@ -1,3 +1,4 @@
+// const ObserveObj = require('../module/observe')
 var chai = require("chai");
 
 var chaiAsPromised = require("chai-as-promised");

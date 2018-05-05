@@ -17,3 +17,4 @@ var ObserveObj = (obj) => {
 
     return new Proxy(obj, handler);
 }
+export default ObserveObj;
