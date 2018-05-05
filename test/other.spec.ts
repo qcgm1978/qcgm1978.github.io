@@ -7,12 +7,16 @@ process.on('unhandledRejection', function (err, promise) {
     debugger;
     console.log('Unhandled rejection (promise: ', promise, ', reason: ', err, ').');
 });
+
+it(`equal`, () => {
+    expect([1, 2, 3]).not.toEqual('1,2,3')
+});
 it(`The greatest truths are the simplest`, () => {
     let isSuccess = false;
     const method = bool => {
         for (let i = 0, fool = true, son = false; i < 10000; i++) {
             if (!fool && !son) {
-                break;
+                return false;
             }
             if (i === 5000) {
                 fool = false;
@@ -26,8 +30,77 @@ it(`The greatest truths are the simplest`, () => {
     };
     expect(method(isSuccess)).toBeTruthy()
 });
+it(`the sequential, conditional and iterative relationship`, () => {
+    const sequential = data => data, conditional = (data, bool) => bool ? data : null, iterative = (data, repeat) => {
+        return data.repeat(repeat);
+
+    }
+    expect(sequential([1])).toEqual([1])
+    expect(conditional([1], false)).toBeNull()
+    expect(iterative('1', 10)).toEqual("1111111111")
+});
+it(`64k file`, () => {
+    // create an ArrayBuffer with a size in bytes
+    let buffer = new ArrayBuffer(8);
+    let uint8 = new Uint8Array(buffer, 2);
+
+    expect(uint8.byteLength).toBe(6);
+
+
+    uint8 = new Uint8Array(buffer, 1, 5);
+    expect(uint8.byteLength).toBe(5); // 5 (as specified when constructing the Uint8Array)
+
+    uint8 = new Uint8Array(buffer, 2);
+    expect(uint8.byteLength).toBe(6); // 6 (due to the offset of the constructed Uint8Array)
+    let str = ' '.repeat(30);
+    expect(str.length).toBe(30)
+    buffer = new ArrayBuffer(30);
+    uint8 = new Uint8Array(buffer);
+    expect(uint8.byteLength).toBe(30); // 8 (matches the byteLength of the buffer)
+    let total = 30 * 3000;
+    buffer = new ArrayBuffer(total);
+    uint8 = new Uint8Array(buffer);
+    expect(uint8.byteLength).toBe(9e4); // 8 (matches the byteLength of the buffer)
+    expect(uint8.byteLength).toBeGreaterThan(64 * 1024)
+});
+it(`Hello World`, () => {
+    const procedureOriented = (input) => {
+        let output = 0;
+        const process = input => `Output: ${input}`;
+        output = process(input);
+        return output;
+    }
+    expect(procedureOriented(`Hello World`)).toBe("Output: Hello World")
+    class OOP {
+        constructor() {
+        }
+        set input(data) {
+            this.output = `Output: ${data}`;
+        }
+
+    }
+    let instance = new OOP();
+    instance.input = `Hello World`;
+    expect(instance.output).toBe("Output: Hello World")
+    class engineering extends OOP {
+        constructor(data) {
+            super(data)
+            this.year = data;
+        }
+
+        get outputNew() {
+            return `${this.output}, year: ${this.year}`
+        }
+    }
+    instance = new engineering(new Date().getFullYear())
+    instance.input = `Hello World`
+    expect(instance.output).toBe("Output: Hello World");
+    expect(instance.outputNew).toBe("Output: Hello World, year: 2018")
+});
+it(`Algorithms + Data Structures = Programs `, () => {
+    let Algorithms = input => 'output'
+});
 it(`http://wgo.waltheri.net/tutorials/board`, (/* done */) => {
-    debugger;
     expect(WGo).toBeDefined()
     expect(WGo.Board).toBeInstanceOf(Function)
     const getAjax = function (url, data, token, sucFn, errFn) {
