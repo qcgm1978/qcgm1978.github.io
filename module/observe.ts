@@ -1,4 +1,4 @@
-var ObserveObj = (obj) => {
+var ObserveData = (data, callback = () => { }) => {
     const handler = {
         set(target, key, value) {
             console.log(`Setting value ${key} as ${value}`)
@@ -15,6 +15,7 @@ var ObserveObj = (obj) => {
         },
     };
 
-    return new Proxy(obj, handler);
+    return new Proxy(data, handler);
 }
-export default ObserveObj;
+
+export default ObserveData;
