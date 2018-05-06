@@ -22,7 +22,7 @@
     "test": "node --inspect=7000 ./node_modules/jest/bin/jest.js --runInBand  --watch",
     "mac": "sudo node --inspect=9222 node_modules/.bin/jest --runInBand  --watch",
     "py": "python test/python/ndtest.py",
-    "fkill": "fkill :9229 -f -v",
+    "fkill": "fkill :8080 -f -v",
     "tsc": "tsc --watch --inlineSourceMap true -m amd --outFile built/out.js module/demo.ts",
     "mocha": "mocha mocha/**/**.spec.ts --require ts-node/register --watch-extensions ts --watch --recursive --inspect"
   },
