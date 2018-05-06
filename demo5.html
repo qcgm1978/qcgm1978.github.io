@@ -28,8 +28,11 @@
 	<div id="container" data-wgo="" data-wgo-layout="top: ['Control']" style="width: 70%; margin: 0">
 		Your browser doesn't support WGo Player. Use some modern browser like IE9, Google Chrome or Mozilla Firefox.
 	</div>
-	<script src="node_modules/systemjs/dist/system.js"></script>
-	<script src="built/out.js"></script>
+	<!-- <script src="node_modules/systemjs/dist/system.js"></script> -->
+	<script src="node_modules/requirejs/require.js"></script>
+	<script src="node_modules/jquery/dist/jquery.js"></script>
+	<!-- <script src="built/out.js"></script> -->
+	<script src="module/go.js"></script>
 	<script>
 		const getAjax = function (url, data, token, sucFn, errFn) {
 			$.ajax({
