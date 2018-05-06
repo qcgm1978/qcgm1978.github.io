@@ -45,20 +45,32 @@
         function main() {
             const canvas = document.querySelector("#glCanvas");
             // Initialize the GL context
-            const gl = canvas.getContext("webgl");
+            let gl = canvas.getContext("webgl");
 
             // Only continue if WebGL is available and working
             if (!gl) {
                 alert("Unable to initialize WebGL. Your browser or machine may not support it.");
                 return;
             }
-
+            gl = Object.create(new Proxy(gl, {
+                get(target, key) {
+                    console.log(`Reading value from ${key}`)
+                    debugger;
+                    return Reflect.get(target, key, window, {})
+                    // return target[key];
+                },
+                // apply: function (target, thisArg, argumentsList) {
+                //     console.log('called: ' + argumentsList.join(', '));
+                //     return argumentsList[0] + argumentsList[1] + argumentsList[2];
+                // }
+            }));
             // Set clear color to black, fully opaque
             gl.clearColor(0.0, 0.0, 0.0, 1.0);
             // Clear the color buffer with specified clear color
             gl.clear(gl.COLOR_BUFFER_BIT);
             console.assert(canvas instanceof Object, canvas);
             console.assert(gl.clearColor instanceof Function, gl.clearColor)
+            console.assert
         }
     </script>
     <script>
