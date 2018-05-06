@@ -9,6 +9,9 @@ chai.use(chaiAsPromised);
 // Then either:
 var expect = chai.expect;
 const isIos = process.platform === 'darwin';
+it(`TensorFlow.js is an open source WebGL-accelerated JavaScript library for machine intelligence. `, () => {
+
+});
 describe(`https://js.tensorflow.org/api/0.9.0/`, () => {
     // before(() => {
     //     this.isIos = () => !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
