@@ -24,7 +24,7 @@
     "py": "python test/python/ndtest.py",
     "fkill": "fkill :9229 -f -v",
     "tsc": "tsc --watch --sourceMap true -m system --outFile built/out.js module/demo.ts",
-    "mocha": "mocha mocha/*.spec.ts --require ts-node/register --watch-extensions ts --watch --recursive --inspect"
+    "mocha": "mocha mocha/**/**.spec.ts --require ts-node/register --watch-extensions ts --watch --recursive --inspect"
   },
   "repository": {
     "type": "git",
@@ -41,6 +41,7 @@
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "jest": "^22.4.3",
+    "mocha": "^5.1.1",
     "puppeteer": "^1.3.0",
     "source-map-support": "^0.5.4",
     "ts-jest": "^22.4.4",
