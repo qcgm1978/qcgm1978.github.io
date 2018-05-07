@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>WGo</title>
+	<script type="text/javascript" src="node_modules/wgo.js-1/wgo/wgo.js"></script>
+	<script type="text/javascript" src="node_modules/wgo.js-1/wgo/kifu.js"></script>
+	<script type="text/javascript" src="node_modules/wgo.js-1/wgo/sgfparser.js"></script>
+	<script type="text/javascript" src="node_modules/wgo.js-1/wgo/player.js"></script>
+	<script type="text/javascript" src="node_modules/wgo.js-1/wgo/basicplayer.js"></script>
+	<script type="text/javascript" src="node_modules/wgo.js-1/wgo/basicplayer.component.js"></script>
+	<script type="text/javascript" src="node_modules/wgo.js-1/wgo/basicplayer.infobox.js"></script>
+	<script type="text/javascript" src="node_modules/wgo.js-1/wgo/basicplayer.commentbox.js"></script>
+	<script type="text/javascript" src="node_modules/wgo.js-1/wgo/basicplayer.control.js"></script>
+	<script type="text/javascript" src="node_modules/wgo.js-1/wgo/player.editable.js"></script>
+	<script type="text/javascript" src="node_modules/wgo.js-1/wgo/scoremode.js"></script>
+	<script type="text/javascript" src="node_modules/wgo.js-1/wgo/player.permalink.js"></script>
+	<!-- <script src="node_modules/jquery/dist/jquery.js"></script> -->
+	<link rel="stylesheet" type="text/css" href="node_modules/wgo.js-1/wgo/wgo.player.css" />
+
+</head>
+
+<body>
+	<h1 style="font-family: Consolas">WGo.js Player demo - alternative layout</h1>
+
+	<h3>Gu Li (B) vs. Shi Yue</h3>
+	<div id="container" data-wgo="" data-wgo-layout="top: ['Control']" style="width: 70%; margin: 0">
+		Your browser doesn't support WGo Player. Use some modern browser like IE9, Google Chrome or Mozilla Firefox.
+	</div>
+	<!-- <script src="node_modules/systemjs/dist/system.js"></script> -->
+	<script src="node_modules/requirejs/require.js"></script>
+	<script src="node_modules/jquery/dist/jquery.js"></script>
+	<!-- <script src="built/out.js"></script> -->
+	<script src="module/go.js"></script>
+	<script>
+		const getAjax = function (url, data, token, sucFn, errFn) {
+			$.ajax({
+				type: "get",
+				url: url,
+				beforeSend: function (xhr) {
+					xhr.setRequestHeader("usertoken", token);
+				},
+				data: data,
+				dataType: "json",
+				timeout: 10000,
+				success: sucFn,
+				error: errFn
+			});
+		}
+		const loadData = () => {
+			var self = this;
+			// var url = '/online/golive/getdetail?id=' + commonMethod.getQueryString('id');
+			var url = 'http://portal.yikeweiqi.com/online/golive/getdetail?id=8681'
+			getAjax(url, '', self.userToken || -1, function (res) {
+				expect(res).toBeDefined()
+				done()
+				self.boardInfo = res.live;
+				self.cmt = res.cmt;
+				self.branch = res.branch;
+				self.player.loadSgf(self.boardInfo.Content);
+				self.player.last();
+				self.changeReaderControl();
+			}.bind(this), (err) => {
+				debugger;
+			});
+		}
+		// loadData()
+	</script>
+</body>
+
+</html>
