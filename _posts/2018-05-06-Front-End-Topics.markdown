@@ -117,6 +117,48 @@ You should grasp google search and learn by stackoverflow, github, Mozilla MDN. 
 
 <B>Grasp English like JavaScript</B>
 
+Now let's add css. I insert the following css into the html before body tag.
+
+{% highlight css %}
+ body {
+            background: midnightblue;
+        }
+{% endhighlight %}
+
+Firstly we should insert style before body tag because the browser render engine render the page from top to bottom. So the engine will be easy layout if it receives style early. As we can the html effect we found the text appears glow because the contrast ratio is low. Now I'll desmontrate how to solve the problem. You know we have canary devtools. Let's press Cmd+Alt+I(nspect) to open it and position the text element. In the style panel of Element tool I see element.style prompt. I click the blank part and input `color: #000` and click the square color block and see the middle Contrast Ratio. I see an icon warning me the color contrast ratio is low. Then what does the low contrast ratio mean? This usually comes down to color contrast, the relationship between the foreground and background colors' luminance. When the colors are similar, the contrast ratio is low; when they are different, the contrast ratio is high.
+
+The WebAIM guidelines recommend an AA (minimum) contrast ratio of 4.5:1 for all text. So I click the part and see a curve line. The color contrast ratio is high when I click the pixel color area above the curve line. At last I get a color #e2cfcf that indicates the contrast ratio between the foreground #e2cfcf and the background color midninghtblue is 9.94 that is very nice. Now I add a new style rule as the following:
+
+{% highlight css %}
+p {
+            color: #e2cfcf;
+        }
+{% endhighlight %}
+
+Livereload auto refresh the page and the effect is satisfactory!
+
+Now you see I have to grasp the design knowledge and devtools to solve the problem. The front end engineer need so many domain knwoledge!
+
+Don't forget you're a front end engineer, the most part of your work is about UI effect. So I'll explore how to make the UI effect.
+
+Firstly let's implement a tab toggle effect. But what is the interaction?
+
+Human–Computer Interaction (commonly referred to as HCI) researches the design and use of computer technology, focused on the interfaces between people (users) and computers. Let's consider [Thirteen principles of display design](https://en.wikipedia.org/wiki/Human%E2%80%93computer_interaction#Thirteen_principles_of_display_design):
+
+Perceptual principles:
+
+1. Make displays legible (or audible).
+
+So I want to make the text zoom in to legible when I click the text that need registr click event that changing the style of the text. But before that I'll reference jQuery library for the convinence of DOM operation.
+
+{% highlight javascript %}
+ $(() => {
+            $('p').click(function (evt) {
+                $(this).css('font-size', 18)
+            })
+        })
+{% endhighlight %}
+
 To be continued
 
 Best luck to you!
