@@ -4,13 +4,13 @@
 import { foo } from './exports'
 import * as math from './exports'
 import * as puppeteer from 'puppeteer';
-import * as WGo from 'wgo.js-1'
+// import * as WGo from 'wgo.js-1'
 import * as $ from 'jquery';
 process.on('unhandledRejection', function (err, promise) {
     debugger;
     console.log('Unhandled rejection (promise: ', promise, ', reason: ', err, ').');
 });
-it(`https://twitter.com/WorldAndScience/status/992297965715767296`, (done) => {
+it(`https://twitter.com/WorldAndScience/status/992297965715767296`, (/* done */) => {
     const universeAge = 13.7e9, quarkElectronSoup = Math.pow(10, -32), PlanckTime = Math.pow(10, -43), timeBeforeAtom = 3 * 60, MilkyWay = 13.2e9, SunAge = 4.57e9, EarthAge = 4.54e9, lifeAge = 3.5e9;
     const timeArr = [universeAge, quarkElectronSoup, PlanckTime, timeBeforeAtom, MilkyWay, SunAge, EarthAge, lifeAge];
     const randomArithmaticOperate = (num1, num2) => {
@@ -31,32 +31,32 @@ it(`https://twitter.com/WorldAndScience/status/992297965715767296`, (done) => {
         const num = Math.floor(Math.random() * (obj.max - 1)) + obj.min;
         return num === obj.notEqual ? getRandomBetween(obj) : num
     };
-    const promise = new Promise((resolve, rject) => {
-        const recursive = (arr) => {
-            if (arr.length <= 1) {
-                return resolve(arr[0])
-            }
-            const random1 = getRandomBetween({
-                min: 0,
-                max: arr.length
-            }), random2 = getRandomBetween({
-                min: 0,
-                max: arr.length,
-                notEqual: random1
-            });
-            const result = randomArithmaticOperate(arr[random1], arr[random2]);
-            const min = Math.min(random1, random2);
-            const max = Math.max(random1, random2);
-            const array = arr.slice(0, min).concat(arr.slice(min + 1, max)).concat(arr.slice(max + 1));
-            array.push(result);
-            recursive(array)
-        }
-        recursive(timeArr)
-    })
-    promise.then(data => {
-        expect(data).toBe()
-        done()
-    })
+    // const promise = new Promise((resolve, rject) => {
+    //     const recursive = (arr) => {
+    //         if (arr.length <= 1) {
+    //             return resolve(arr[0])
+    //         }
+    //         const random1 = getRandomBetween({
+    //             min: 0,
+    //             max: arr.length
+    //         }), random2 = getRandomBetween({
+    //             min: 0,
+    //             max: arr.length,
+    //             notEqual: random1
+    //         });
+    //         const result = randomArithmaticOperate(arr[random1], arr[random2]);
+    //         const min = Math.min(random1, random2);
+    //         const max = Math.max(random1, random2);
+    //         const array = arr.slice(0, min).concat(arr.slice(min + 1, max)).concat(arr.slice(max + 1));
+    //         array.push(result);
+    //         recursive(array)
+    //     }
+    //     recursive(timeArr)
+    // })
+    // promise.then(data => {
+    //     expect(data).toBe()
+    //     done()
+    // })
 });
 it(`equal`, () => {
     expect([1, 2, 3]).not.toEqual('1,2,3')
@@ -150,42 +150,42 @@ it(`Hello World`, () => {
 it(`Algorithms + Data Structures = Programs `, () => {
     let Algorithms = input => 'output'
 });
-it(`http://wgo.waltheri.net/tutorials/board`, (/* done */) => {
-    expect(WGo).toBeDefined()
-    expect(WGo.Board).toBeInstanceOf(Function)
-    const getAjax = function (url, data, token, sucFn, errFn) {
-        $.ajax({
-            type: "get",
-            url: url,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader("usertoken", token);
-            },
-            data: data,
-            dataType: "json",
-            timeout: 10000,
-            success: sucFn,
-            error: errFn
-        });
-    }
-    const loadData = () => {
-        var self = this;
-        // var url = '/online/golive/getdetail?id=' + commonMethod.getQueryString('id');
-        var url = 'http://portal.yikeweiqi.com/online/golive/getdetail?id=8681'
-        getAjax(url, '', self.userToken || -1, function (res) {
-            expect(res).toBeDefined()
-            done()
-            self.boardInfo = res.live;
-            self.cmt = res.cmt;
-            self.branch = res.branch;
-            self.player.loadSgf(self.boardInfo.Content);
-            self.player.last();
-            self.changeReaderControl();
-        }.bind(this), (err) => {
-            debugger;
-        });
-    }
-    // loadData()
-});
+// it(`http://wgo.waltheri.net/tutorials/board`, (/* done */) => {
+//     expect(WGo).toBeDefined()
+//     expect(WGo.Board).toBeInstanceOf(Function)
+//     const getAjax = function (url, data, token, sucFn, errFn) {
+//         $.ajax({
+//             type: "get",
+//             url: url,
+//             beforeSend: function (xhr) {
+//                 xhr.setRequestHeader("usertoken", token);
+//             },
+//             data: data,
+//             dataType: "json",
+//             timeout: 10000,
+//             success: sucFn,
+//             error: errFn
+//         });
+//     }
+//     const loadData = () => {
+//         var self = this;
+//         // var url = '/online/golive/getdetail?id=' + commonMethod.getQueryString('id');
+//         var url = 'http://portal.yikeweiqi.com/online/golive/getdetail?id=8681'
+//         getAjax(url, '', self.userToken || -1, function (res) {
+//             expect(res).toBeDefined()
+//             done()
+//             self.boardInfo = res.live;
+//             self.cmt = res.cmt;
+//             self.branch = res.branch;
+//             self.player.loadSgf(self.boardInfo.Content);
+//             self.player.last();
+//             self.changeReaderControl();
+//         }.bind(this), (err) => {
+//             debugger;
+//         });
+//     }
+//     // loadData()
+// });
 it(`The animation CSS property is a shorthand property for the various animation properties: animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, and animation-play-state.`, () => {
     // (async (expect) => {
     //     const browser = await puppeteer.launch();
