@@ -19,14 +19,30 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <p class="element"></p>
-    <script src="../node_modules/typed.js/lib/typed.js"></script>
+    <div id="typed-strings">
+        <p>Today I know TensorFlow.js is released that is a library train and use deep learning models directly in the browser,
+            in JavaScript. Includes the full Keras API, and ability to load saved Keras models (and even fine-tune them in
+            the browser)! So I learn it on the official page: https://js.tensorflow.org/ There's a simple model in the page.
+            So I try it by TDD style. And I want to code a blog with typescript then publish it. So you know how many technologies
+            and tools I'll use. </p>
+        <p>1, The development environment: VS Code. 2, The language: TypeScript, because Tensorflow.js is coded by it. 3, Modules
+            compiling: Webpack 4, TDD framework: Jest, Works with TypeScript 5, HTML integration 6, Website generator: jekyll,
+            integrated into github page 7, Code Managing: GitHub I'll explain the above by the following article by order:
+            1, https://code.visualstudio.com/ You can install HTML Boilerplate plugin and then code `html5-boilerplate` to
+            generate HTML5 Document easily.</p>
+    </div>
+    <span id="typed"></span>
+    <script src="./typed.js"></script>
     <script>
-        var options = {
-            strings: ["<i>First</i> sentence.", "&amp; a second sentence."],
-            typeSpeed: 40
-        }
+        // var options = {
+        //     strings: ["<i>First</i> sentence.", "&amp; a second sentence."],
+        //     typeSpeed: 40
+        // }
 
-        var typed = new Typed(".element", options);
+        // var typed = new Typed(".element", options);
+        var typed = new Typed('.element', {
+            stringsElement: '#typed-strings'
+        });
     </script>
 </body>
 

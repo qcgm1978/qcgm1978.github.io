@@ -30,6 +30,8 @@ I'll explain the above by the following article by order:
 
 You can install HTML Boilerplate plugin and then code `html5-boilerplate` to generate HTML5 Document easily.
 
+Do you want to see above dynamically? Access [link](/tensorflow.js/)
+
 2, https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
 
 Code the first TypeScript TDD

@@ -42,3 +42,4 @@ exclude:
 
 include:
   - node_modules/jquery
+  - node_modules/typed.js
