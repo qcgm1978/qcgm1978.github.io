@@ -12,9 +12,10 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body id="particles-js">
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -32,6 +33,9 @@
             generate HTML5 Document easily.</p>
     </div>
     <span id="typed"></span>
+    <div></div>
+
+    <script src="particles.js"></script>
     <script src="./typed.js"></script>
     <script>
         // var options = {
@@ -42,6 +46,10 @@
         // var typed = new Typed(".element", options);
         var typed = new Typed('.element', {
             stringsElement: '#typed-strings'
+        });
+        /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+        particlesJS.load('particles-js', 'particles.json', function () {
+            console.log('callback - particles.js config loaded');
         });
     </script>
 </body>
