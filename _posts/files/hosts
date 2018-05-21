@@ -1,0 +1,55 @@
+﻿# Copyright (c) 1993-2009 Microsoft Corp.
+#
+# This is a sample HOSTS file used by Microsoft TCP/IP for Windows.
+#
+# This file contains the mappings of IP addresses to host names. Each
+# entry should be kept on an individual line. The IP address should
+# be placed in the first column followed by the corresponding host name.
+# The IP address and the host name should be separated by at least one
+# space.
+#
+# Additionally, comments (such as these) may be inserted on individual
+# lines or following the machine name denoted by a '#' symbol.
+#
+# For example:
+#
+# 102.54.94.97 rhino.acme.com # source server
+# 38.25.63.10 x.acme.com # x client host
+
+# localhost name resolution is handled within DNS itself.
+ 127.0.0.1 localhost
+# ::1 localhost
+
+#############wanda 一期项目 begin#######################################
+
+139.217.25.150 bim-uat.wanda-dev.cn  #uat环境
+#139.217.25.150 bim-demo.wanda.cn
+
+127.0.0.1 bim.wanda-dev.cn           #本地ngnix环境
+
+#120.0.0.1 mobile.wanda-dev.cn        #本地ngnix环境
+#139.217.12.173 bim.wanda-test.cn      #测试环境
+#192.168.73.103 bim-release.wanda-dev.cn
+
+#192.168.2.10 pm.glodon.com
+#10.199.131.140 jijia.wanda.cn
+
+# yun-location
+#60.205.109.85 yun.glodon.com
+#60.205.109.85 api.glodon.com
+#172.16.233.54 yun.glodon.com
+#172.16.233.54 api.glodon.com
+#172.16.233.54 account.glodon.com
+
+#172.16.233.58 static.glodon.com
+#172.16.233.54 shop.glodon.com
+#172.16.233.46 owa.glodon.com
+#172.16.233.54 yunmodel.glodon.com
+
+#127.0.0.1 static.glodon.com
+#127.0.0.1 static1.glodon.com
+#127.0.0.1 sy.glodon.com
+
+127.0.0.1 localhost
+#############wanda 一期项目 end ########################################
+
