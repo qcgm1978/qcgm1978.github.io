@@ -20,7 +20,7 @@
   "scripts": {
     "start": "bundle exec jekyll serve",
     "windows": "node --inspect=7000 ./node_modules/jest/bin/jest.js --runInBand  --watch",
-    "test": "sudo node --inspect=7000 node_modules/.bin/jest --runInBand  --watch",
+    "test": "node --inspect=7000 node_modules/.bin/jest --runInBand  --watch",
     "dts": "dts-gen -m yargs -f test/yargs",
     "webpack": "webpack --config webpack.config.js -w -d",
     "py": "python test/python/ndtest.py",

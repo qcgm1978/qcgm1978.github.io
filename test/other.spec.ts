@@ -11,6 +11,7 @@ process.on('unhandledRejection', function (err, promise) {
     console.log('Unhandled rejection (promise: ', promise, ', reason: ', err, ').');
 });
 it(`https://twitter.com/WorldAndScience/status/992297965715767296`, (/* done */) => {
+    expect
     const universeAge = 13.7e9, quarkElectronSoup = Math.pow(10, -32), PlanckTime = Math.pow(10, -43), timeBeforeAtom = 3 * 60, MilkyWay = 13.2e9, SunAge = 4.57e9, EarthAge = 4.54e9, lifeAge = 3.5e9;
     const timeArr = [universeAge, quarkElectronSoup, PlanckTime, timeBeforeAtom, MilkyWay, SunAge, EarthAge, lifeAge];
     const randomArithmaticOperate = (num1, num2) => {
