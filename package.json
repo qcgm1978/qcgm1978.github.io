@@ -20,11 +20,11 @@
   "scripts": {
     "start": "bundle exec jekyll serve",
     "windows": "node --inspect=7000 ./node_modules/jest/bin/jest.js --runInBand  --watch",
-    "test": "node --inspect=7000 node_modules/.bin/jest --runInBand  --watch",
+    "test": "node --inspect=7001 node_modules/.bin/jest --runInBand  --watch",
     "dts": "dts-gen -m yargs -f test/yargs",
     "webpack": "webpack --config webpack.config.js -w -d",
     "py": "python test/python/ndtest.py",
-    "fkill": "fkill :8080 -f -v",
+    "fkill": "fkill :9229 -f -v",
     "tsc": "tsc --watch --inlineSourceMap true -m amd --outFile built/out.js module/demo.ts",
     "mocha": "mocha mocha/**/**.spec.ts --require ts-node/register --watch-extensions ts --watch --recursive --inspect"
   },
