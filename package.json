@@ -60,6 +60,7 @@
     "jest-cli": "^22.4.3",
     "jquery": "^3.3.1",
     "mathjs": "^4.1.2",
+    "moment": "^2.22.1",
     "nodemon": "^1.17.3",
     "normal-distribution": "0.0.5",
     "npm-run-all": "^4.1.2",

@@ -1,26 +1,19 @@
+
 module.exports = {
-    entry: { home: "./module/yargs.d.ts" },
+    mode: "development",
+    devtool: "inline-source-map",
+    entry: { home: "./html/region" },
     output: {
-        filename: "./built/bundle.js",
+        filename: "./html/region.js",
     },
-
-    // Enable sourcemaps for debugging webpack's output.
-    devtool: "source-map",
-
     resolve: {
-        // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: ["*", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        // Add `.ts` and `.tsx` as a resolvable extension.
+        extensions: [".ts", ".tsx", ".js"]
     },
-
     module: {
-
-
         rules: [
-            { test: /\.tsx?$/, loader: "awesome-typescript-loader", include: __dirname, options: { onlyCompileBundledFiles: true } },
-            // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-            { test: /\.js$/, enforce: "pre", loader: "source-map-loader" }
+            // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
+            { test: /\.tsx?$/, loader: "ts-loader" }
         ]
-    },
-
-    // Other options...
+    }
 };
