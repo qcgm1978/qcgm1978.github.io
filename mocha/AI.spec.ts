@@ -1,6 +1,6 @@
 import * as tf from '@tensorflow/tfjs';
 import NormalDistribution from 'normal-distribution'
-var chai = require("chai");
+import * as chai from "chai";
 
 var chaiAsPromised = require("chai-as-promised");
 

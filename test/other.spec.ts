@@ -1,6 +1,3 @@
-
-
-
 import { foo } from './exports'
 import * as math from './exports'
 import * as puppeteer from 'puppeteer';
@@ -10,7 +7,38 @@ process.on('unhandledRejection', function (err, promise) {
     debugger;
     console.log('Unhandled rejection (promise: ', promise, ', reason: ', err, ').');
 });
+it(`The get trap executes when you try to access a property of an object using the proxy. Get method accepts target (the object we are trying to access) and the property (the property that we try to access).`, () => {
+    let target = {
+        a: 1
+    }, b = 0;
+    var p = new Proxy(target, {
+        get: function (target, property, receiver) {
+            b = target[property]
+        }
+    });
+    const a = p.a
+    expect(b).toBe(1)
+});
+it(`An arrow function expression has a shorter syntax than a function expression and does not have its own this, arguments, super, or new.target. These function expressions are best suited for non-method functions, and they cannot be used as constructors.`, () => {
+    const Arrow = () => this.prop = true;
+    const arrow = new Arrow()
+    expect(arrow.prop).toBeUndefined()
+    const FunctionExpression = function () {
+        this.prop = true;
+    }
+    const instance = new FunctionExpression()
+    expect(instance.prop).toBeTruthy()
+});
+it(`Symbol creates a new symbol each time`, () => {
+    expect(Symbol('foo')).not.toEqual(Symbol('foo'))
+});
+it(`The typeof operator can help you to identify symbols.`, () => {
+    // expect(Symbol()).toBeInstanceOf(Symbol)
+    // expect(Symbol('foo')).toBeInstanceOf(Symbol)
+    // expect(Symbol.iterator).toBeInstanceOf(Symbol)
+});
 it(`https://twitter.com/WorldAndScience/status/992297965715767296`, (/* done */) => {
+    expect
     const universeAge = 13.7e9, quarkElectronSoup = Math.pow(10, -32), PlanckTime = Math.pow(10, -43), timeBeforeAtom = 3 * 60, MilkyWay = 13.2e9, SunAge = 4.57e9, EarthAge = 4.54e9, lifeAge = 3.5e9;
     const timeArr = [universeAge, quarkElectronSoup, PlanckTime, timeBeforeAtom, MilkyWay, SunAge, EarthAge, lifeAge];
     const randomArithmaticOperate = (num1, num2) => {

@@ -1,0 +1,113 @@
+---
+layout: post
+title:  "REACT"
+date:   2018-05-28 1:38:28 +0800
+categories: jekyll update
+---
+
+`React elements are immutable. Once you create an element, you can’t change its children or attributes. An element is like a single frame in a movie: it represents the UI at a certain point in time.`
+
+`React DOM compares the element and its children to the previous one, and only applies the DOM updates necessary to bring the DOM to the desired state.`
+
+
+{% highlight typescript %}
+ it(`The async function declaration defines an asynchronous function, which returns an AsyncFunction object.`, (done) => {
+  function resolveAfter2Seconds() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve('resolved');
+      }, 2000);
+    });
+  }
+
+  async function asyncCall() {
+    var result = await resolveAfter2Seconds();
+    return (result);
+  }
+
+  asyncCall().then(data => {
+    expect(data).toBe('resolved')
+    done()
+  });
+});
+{% endhighlight %}
+
+Of course you should need install the relatively dependencies includes jest etc and set the test script command like `"test": "sudo node --inspect=7000 node_modules/.bin/jest --runInBand  --watch"` that indicates executed by sudo authority and inspect 7000 port or any other port so you can debug it on the Chrome/Canary insepct panel. The default port is 3299 if you don't set it.
+
+Now the test case passed and we'll go on. What's the meaning of the parameter net that is the return result of `await posenet.load()`? So I set the breakpoint on the line and find the return value is `new PoseNet(mobileNet);`
+
+`  const mobileNet = new MobileNet(variables, checkpoint.architecture);`
+
+MobileNet is a class defined in mobilenet.ts that containing about 100 lines code. The class includes some public and private properties that I want to learn.
+
+I want to test the module directly but it failed and the error is Cannot find module 'ts-jest' from 'index.ts'. I try to install ts-jest but it doesn't work. So I decide to go on and abort the error. I should learn the class properties from typescript docs directly!
+
+I code some test cases like the following, the code would pass the test because the tsc compiler will ignore the type errors defaultly. You should set tsconfig.js as `
+"compilerOptions": {
+    "target": "es6"
+  }
+  `, and the test would fail and you have to comment those code to pass them:
+
+{% highlight typescript %}
+it(`mark a member public explicitly`, () => {
+  class Animal {
+    public name: string;
+    public constructor(theName: string) { this.name = theName; }
+    public move(distanceInMeters: number) {
+      expect(`${this.name} moved ${distanceInMeters}m.`);
+    }
+  }
+  const animal = new Animal('cat')
+  expect(animal.name).toBe('cat')
+});
+it(`When a member is marked private, it cannot be accessed from outside of its containing class`, () => {
+  class Animal {
+    private name: string;
+    constructor(theName: string) { this.name = theName; }
+  }
+
+  expect(new Animal("Cat").name).toBe('Cat'); // Error: 'name' is private;
+  const animal = new Animal("Cat")
+  expect(animal.name).toBe('Cat')
+});
+it(`The protected modifier acts much like the private modifier with the exception that members declared protected can also be accessed within deriving classes.`, () => {
+  class Person {
+    protected name: string;
+    constructor(name: string) { this.name = name; }
+  }
+
+  class Employee extends Person {
+    private department: string;
+
+    constructor(name: string, department: string) {
+      super(name);
+      this.department = department;
+    }
+
+    public getElevatorPitch() {
+      return `Hello, my name is ${this.name} and I work in ${this.department}.`;
+    }
+  }
+
+  let howard = new Employee("Howard", "Sales");
+  expect(howard.getElevatorPitch()).toBe(`Hello, my name is Howard and I work in Sales.`);
+  expect(howard.name).toBe('Howard'); // error
+});
+{% endhighlight %}
+
+Now go on...
+
+There's a line code `  const possibleMultipliers = Object.keys(checkpoints);` that uses Object.keys method and I should test it and focus the return value's order, this time I'll use the actual data that can be get in devtools when pause on the line's breakpoint but it failed, so I have to trace the parameter's origin and last I positon the mysterious code:
+
+{% highlight typescript %}
+export type ConvolutionType = 'conv2d'|'separableConv';
+export type ConvolutionDefinition = [ConvolutionType, number];
+{% endhighlight %}
+
+It seems typescript syntax and I decide to code test case about that:
+
+To be continued
+
+Best luck to you!
+
+Thank you reading my blog.
