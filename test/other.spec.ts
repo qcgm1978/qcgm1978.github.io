@@ -7,6 +7,24 @@ process.on('unhandledRejection', function (err, promise) {
     debugger;
     expect('Unhandled rejection (promise: ', promise, ', reason: ', err, ').').toEqual();
 });
+it(`Move them to an array, sort that array, and then use that array for your purposes. Here's a solution:`, () => {
+    function sort(sortable: any[], prop: String, ascending = true): any {
+        return sortable.sort(function (a, b) {
+            if (typeof a[prop] === 'string') {
+                if (a[prop] < b[prop]) return 1;
+                if (a[prop] > b[prop]) return -1;
+                return 0;
+            }
+            return ascending ? (a[prop] - b[prop]) : (b[prop] - a[prop]);
+        });
+    }
+    var arr = [{ name: 'a', height: 170, weigh: 40 }, { name: 'b', height: 180, weigh: 50 }, { name: 'c', height: 150, weigh: 30 }]
+
+    expect(sort(arr, 'height')).toEqual([{ name: 'c', height: 150, weigh: 30 }, { name: 'a', height: 170, weigh: 40 }, { name: 'b', height: 180, weigh: 50 },]);
+    expect(sort(arr, 'height', false)).toEqual([{ name: 'b', height: 180, weigh: 50 }, { name: 'a', height: 170, weigh: 40 }, { name: 'c', height: 150, weigh: 30 },]);
+    expect(sort(arr, 'name', false)).toEqual([{ name: 'c', height: 150, weigh: 30 }, { name: 'b', height: 180, weigh: 50 }, { name: 'a', height: 170, weigh: 40 },]);
+
+});
 it(`The Promise.all(iterable) method returns a single Promise that resolves when all of the promises in the iterable argument have resolved or when the iterable argument contains no promises. It rejects with the reason of the first promise that rejects.`, (done) => {
     var promise1 = Promise.resolve(3);
     var promise3 = new Promise(function (resolve, reject) {
@@ -450,3 +468,5 @@ it(`Compute the mean value of matrix or a list with values.`, () => {
     expect(math.mean([[2, 5], [6, 3], [1, 7]], 0)).toEqual([3, 5]);    // returns 
     expect(math.mean([[2, 5], [6, 3], [1, 7]], 1)).toEqual([3.5, 4.5, 4]);    // returns 
 });
+
+
