@@ -5,7 +5,73 @@ import * as puppeteer from 'puppeteer';
 import * as $ from 'jquery';
 process.on('unhandledRejection', function (err, promise) {
     debugger;
-    console.log('Unhandled rejection (promise: ', promise, ', reason: ', err, ').');
+    expect('Unhandled rejection (promise: ', promise, ', reason: ', err, ').').toEqual();
+});
+it(`The Promise.all(iterable) method returns a single Promise that resolves when all of the promises in the iterable argument have resolved or when the iterable argument contains no promises. It rejects with the reason of the first promise that rejects.`, (done) => {
+    var promise1 = Promise.resolve(3);
+    var promise3 = new Promise(function (resolve, reject) {
+        setTimeout(resolve, 100, 'foo', 'foo1');
+    });
+    var promise2 = 42;
+
+    Promise.all([promise1, promise3, promise2,]).then(function (values) {
+        expect(values).toEqual([3, "foo", 42,]);
+        done()
+    });
+
+});
+it(`Promise.all waits for all fulfillments (or the first rejection).`, (done) => {
+    var p1 = Promise.resolve(3);
+    var p2 = 1337;
+    var p3 = new Promise((resolve, reject) => {
+        setTimeout(resolve, 100, 'foo');
+    });
+
+    Promise.all([p1, p2, p3]).then(values => {
+        expect(values).toEqual([3, 1337, 'foo'])
+        done()
+    });
+});
+it(`If the iterable contains non-promise values, they will be ignored, but still counted in the returned promise array value (if the promise is fulfilled):`, (done) => {
+    // this will be counted as if the iterable passed is empty, so it gets fulfilled
+    var p = Promise.all([1, 2, 3]);
+    // this will be counted as if the iterable passed contains only the resolved promise with value "444", so it gets fulfilled
+    var p2 = Promise.all([1, 2, 3, Promise.resolve(444)]);
+
+    // using setTimeout we can execute code after the stack is empty
+    setTimeout(function () {
+        p.then(data => expect(data).toEqual([1, 2, 3]));
+        p2.then(data => expect(data).toEqual([1, 2, 3, 444]));
+        done()
+    }, 0);
+});
+it(``, async () => {
+    // we are passing as argument an array of promises that are already resolved,
+    // to trigger Promise.all as soon as possible
+    var resolvedPromisesArray = [Promise.resolve(33), Promise.resolve(44)];
+
+    var p = Promise.all(resolvedPromisesArray);
+    // immediately logging the value of p
+    await expect(p).toBeInstanceOf(Promise)
+    await p.then(data => expect(data).toEqual([33, 44]));
+
+
+});
+it(`The same thing happens if Promise.all rejects:`, () => {
+    expect(Promise.all([Promise.resolve(33), Promise.reject(44)])).rejects.toThrow(/44/);
+});
+it(`this will be counted as if the iterable passed contains only the rejected promise with value "555", so it gets rejected`, (done) => {
+    var p3 = Promise.all([1, 2, 3, Promise.reject(555)]).catch(data => {
+        expect(data).toBe(555);
+        done()
+    });
+    expect(Promise.all([1, 2, 3, Promise.reject(555)])).rejects.toThrow()
+});
+test('rejects to octopus', async () => {
+    await expect(Promise.reject(new Error('octopus'))).rejects.toThrow('octopus');
+    await expect(Promise.all([1, 2, 3, Promise.reject(555)])).rejects.toThrow(/555/)
+    await expect(Promise.all([1, 2, 3, Promise.reject({ code: 555, status: 404 })])).rejects.toMatchObject({ code: 555 });
+
 });
 it(`The get trap executes when you try to access a property of an object using the proxy. Get method accepts target (the object we are trying to access) and the property (the property that we try to access).`, () => {
     let target = {
