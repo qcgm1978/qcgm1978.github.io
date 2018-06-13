@@ -60,6 +60,27 @@ it(``, async () => {
 it(`The same thing happens if Promise.all rejects:`, () => {
     expect(Promise.all([Promise.resolve(33), Promise.reject(44)])).rejects.toThrow(/44/);
 });
+it(`It is possible to change this behaviour by handling possible rejections:`, async () => {
+    var p1 = new Promise((resolve, reject) => {
+        setTimeout(resolve, 1000, 'p1_delayed_resolvement');
+    });
+
+    var p2 = new Promise((resolve, reject) => {
+        reject(new Error('p2_immediate_rejection'));
+    });
+
+    await Promise.all([
+        p1.catch(error => {
+            return error.message;
+        }),
+        p2.catch(error => {
+            return error.message
+        }),
+    ]).then(values => {
+        expect(values).toEqual(["p1_delayed_resolvement", 'p2_immediate_rejection']);
+    })
+
+});
 it(`this will be counted as if the iterable passed contains only the rejected promise with value "555", so it gets rejected`, (done) => {
     var p3 = Promise.all([1, 2, 3, Promise.reject(555)]).catch(data => {
         expect(data).toBe(555);
