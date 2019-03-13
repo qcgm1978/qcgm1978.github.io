@@ -7,6 +7,147 @@ process.on('unhandledRejection', function (err, promise) {
     debugger;
     expect('Unhandled rejection (promise: ', promise, ', reason: ', err, ').').toEqual();
 });
+it(`A closure is the combination of a function and the lexical environment within which that function was declared. `, () => {
+    function init() {
+        var name = 'Mozilla'; // name is a local variable created by init
+        function displayName() { // displayName() is the inner function, a closure
+            expect(name).toBe('Mozilla'); // use variable declared in the parent function    
+        }
+        displayName();
+    }
+    init();
+});
+it(` inner function is returned from the outer function before being executed.`, () => {
+    function makeFunc() {
+        var name = 'Mozilla';
+        function displayName() {
+            expect(name).toBe('Mozilla');
+        }
+        return displayName;
+    }
+
+    var myFunc = makeFunc();
+    myFunc();
+});
+it(` share the same function body definition, but store different lexical environments.`, () => {
+    function makeAdder(x) {
+        return function (y) {
+            return x + y;
+        };
+    }
+
+    var add5 = makeAdder(5);
+    var add10 = makeAdder(10);
+
+    expect(add5(2)).toBe(7);  // 7
+    expect(add10(2)).toBe(12);
+});
+it(`Emulating private methods with closures`, () => {
+    var counter = (function () {
+        var privateCounter = 0;
+        function changeBy(val) {
+            privateCounter += val;
+        }
+        return {
+            increment: function () {
+                changeBy(1);
+            },
+            decrement: function () {
+                changeBy(-1);
+            },
+            value: function () {
+                return privateCounter;
+            }
+        };
+    })();
+
+    expect(counter.value()).toBe(0); // logs 0
+    counter.increment();
+    counter.increment();
+    expect(counter.value()).toBe(2); // logs 2
+    counter.decrement();
+    expect(counter.value()).toBe(1);
+});
+it(` In this context, we can say all closures have access to all outer function scopes within which they were declared.`, () => {
+    // global scope
+    var e = 10;
+    function sum(a) {
+        return function (b) {
+            return function (c) {
+                // outer functions scope
+                return function (d) {
+                    // local scope
+                    return a + b + c + d + e;
+                }
+            }
+        }
+    }
+
+    expect(sum(1)(2)(3)(4)).toBe(20)
+
+    // We can also write without anonymous functions:
+
+    // global scope
+    var e = 10;
+    function sum(a) {
+        return function sum2(b) {
+            return function sum3(c) {
+                // outer functions scope
+                return function sum4(d) {
+                    // local scope
+                    return a + b + c + d + e;
+                }
+            }
+        }
+    }
+
+    var s = sum(1);
+    var s1 = s(2);
+    var s2 = s1(3);
+    var s3 = s2(4);
+    expect(s3).toBe(20)
+});
+it(`Singleton Pattern`, () => {
+    class Foo {
+        constructor(msg) {
+
+            if (Foo.singleton) {
+                return Foo.singleton;
+            }
+
+            this.msg = msg;
+            Foo.singleton = this;
+            return Foo.singleton;
+        }
+    }
+    expect(new Foo('first')).toEqual({ "msg": "first" })
+    expect(new Foo('second')).toEqual({ "msg": "first" })
+
+});
+it(` module pattern, it basically allows you to encapsulate private members on an object, by taking advantage of the use of closures.`, () => {
+    var myInstance = (function () {
+        var isInited = false;
+
+        function privateMethod() {
+            // ...
+        }
+
+        return { // public interface
+            publicMethod1: function () {
+                if (isInited) {
+                    throw 'err'
+                }
+                isInited = true;;
+                // all private members are accesible here
+            },
+            publicMethod2: function () {
+            }
+        };
+    })();
+    expect(new myInstance.publicMethod1()).toEqual({})
+    expect(() => new myInstance.publicMethod1()).toThrow()
+
+});
 it(`Move them to an array, sort that array, and then use that array for your purposes. Here's a solution:`, () => {
     function sort(sortable: any[], prop: String, ascending = true): any {
         return sortable.sort(function (a, b) {

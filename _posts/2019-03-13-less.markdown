@@ -1,0 +1,15 @@
+---
+layout: post
+title: " Less code is always better."
+date: 2019-03-13 1:38:28 +0800
+categories: jekyll update
+---
+
+`Less code is always better.`
+
+ <p class="codepen" data-height="265" data-theme-id="0" data-default-tab="html,result" data-user="qcgm1978" data-slug-hash="qvVKzO" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="A JavaScript-Free Frontend">
+  <span>See the Pen <a href="https://codepen.io/qcgm1978/pen/qvVKzO/">
+  A JavaScript-Free Frontend</a> by youth (<a href="https://codepen.io/qcgm1978">@qcgm1978</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
